@@ -1,0 +1,482 @@
+{
+  "__doc__": "Central configuration for synthetic ServiceNow incident generation. Edit pools and settings below to control the realism and variability of generated incidents. See docs/CONFIG_GUIDE.md for field explanations.",
+  "config_version": "2.1.0",
+  "last_updated": "2025-05-30",
+
+  "company_name": "Abstergo Industries",
+  "business_domain": "Technology",
+  "technical_environment": "Azure cloud environment with hybrid connectivity, Microsoft 365, Azure Active Directory, IKON Knowledge Base, and ServiceNow ITSM",
+
+  "generation_settings": {
+    "default_batch_size": 100,
+    "max_retries": 3,
+    "retry_delay": 1.0,
+    "enable_progress_tracking": true,
+    "enable_detailed_logging": true,
+    "temperature": 0.7,
+    "max_tokens": 2000
+  },
+
+  "default_settings": {
+    "assignment_groups": ["Golden_Incident_Management", "IT Support", "Network Operations", "Service Desk"],
+    "assigned_to_pool": ["Alex Chen", "Sarah Johnson", "Mike Rodriguez", "David Park", "Emily Davis", "James Wilson", "Lisa Park", "Kevin Zhang"],
+    "caller_pool": ["Jane Doe", "John Smith", "Emily Davis", "Michael Brown", "Hans Havlik"],
+    "requestor_email_domain": "abstergo.com",
+    "configuration_items": ["AMO", "CRM", "Email Gateway", "VPN Appliance", "Database Cluster"],
+    "close_code_options": ["Closed/Resolved", "Closed/Cancelled", "Closed/No Fault Found"],
+    "default_state": "Closed"
+  },
+
+  "work_notes_templates": [
+    "User reported issue resolved after cache clear.",
+    "Rebooted affected server and confirmed service restoration.",
+    "Coordinated with network team for firewall rule update.",
+    "Provided user with workaround pending permanent fix.",
+    "Escalated to vendor for further analysis.",
+    "User confirmed resolution and no further issues."
+  ],
+  "close_notes_templates": [
+    "Incident resolved by applying latest security patch.",
+    "Root cause identified as misconfigured DNS entry.",
+    "User training provided to prevent recurrence.",
+    "Hardware component replaced and system tested successfully.",
+    "No fault found after extensive diagnostics; monitoring ongoing."
+  ],
+
+  "trending_issues": [
+    "VPN connectivity failures",
+    "Phishing email reports",
+    "Outlook synchronization delays",
+    "Database performance degradation"
+  ],
+
+  "custom_fields": {
+    "location": ["New York", "London", "Berlin", "Bangalore", "Remote"],
+    "region": ["Americas", "EMEA", "APAC"]
+  },
+
+  "technician_specializations": {
+    "Hardware": ["Alex Chen", "Sarah Johnson", "Mike Rodriguez", "David Park"],
+    "Software": ["Emily Davis", "James Wilson", "Lisa Park", "Kevin Zhang"],
+    "Network": ["David Kim", "Anna Schmidt", "Carlos Lopez", "Rachel Turner"],
+    "Security": ["Rachel Green", "Tom Anderson", "Maya Patel", "Ahmed Ali"],
+    "Database": ["Kevin Liu", "Sophie Brown", "Ahmed Hassan", "Maria Garcia"],
+    "Email": ["Jennifer Smith", "Mark Taylor", "Priya Sharma", "Chris Johnson"]
+  },
+  "business_domains": {
+    "Technology": {
+      "departments": ["Engineering", "DevOps", "Product", "QA", "Architecture", "Data Science"],
+      "common_technologies": ["Azure", "Kubernetes", "Docker", "CI/CD", "Microservices", "React", "Node.js"],
+      "compliance_requirements": ["SOC2", "GDPR", "HIPAA", "ISO 27001"]
+    },
+    "Financial Services": {
+      "departments": ["Trading", "Risk Management", "Compliance", "Operations", "IT", "Quantitative Analysis"],
+      "common_technologies": ["Trading Platforms", "Risk Systems", "Core Banking", "Payment Processing", "Bloomberg Terminal"],
+      "compliance_requirements": ["SOX", "PCI-DSS", "Basel III", "MiFID II", "GDPR"]
+    },
+    "Healthcare": {
+      "departments": ["Clinical", "Administration", "IT", "Compliance", "Research", "Patient Services"],
+      "common_technologies": ["EMR", "PACS", "Laboratory Systems", "Telehealth", "Medical Devices"],
+      "compliance_requirements": ["HIPAA", "HITECH", "FDA", "GDPR", "ISO 13485"]
+    },
+    "Manufacturing": {
+      "departments": ["Production", "Quality", "Logistics", "Maintenance", "IT", "Supply Chain"],
+      "common_technologies": ["ERP", "MES", "SCADA", "PLM", "IoT Sensors", "Robotics"],
+      "compliance_requirements": ["ISO 9001", "ISO 14001", "OSHA", "FDA", "CE Marking"]
+    },
+    "Retail": {
+      "departments": ["Sales", "Marketing", "Inventory", "Customer Service", "IT", "E-commerce"],
+      "common_technologies": ["POS Systems", "E-commerce", "Inventory Management", "CRM", "Analytics"],
+      "compliance_requirements": ["PCI-DSS", "GDPR", "CCPA", "SOX", "FTC Guidelines"]
+    }
+  },
+  "incident_categories": {
+    "Hardware": {
+      "Desktop Workstation": [
+        "Boot Issues",
+        "Power Supply",
+        "Memory",
+        "Hard Drive",
+        "Graphics Card",
+        "Motherboard",
+        "CPU",
+        "Optical Drive",
+        "USB Ports",
+        "Cooling Fan"
+      ],
+      "Laptop": [
+        "Battery",
+        "Screen",
+        "Keyboard",
+        "Performance",
+        "Overheating",
+        "Trackpad",
+        "Webcam",
+        "Audio",
+        "WiFi Card",
+        "Docking Station"
+      ],
+      "Server": [
+        "Hardware Failure",
+        "Performance",
+        "Storage",
+        "Network Card",
+        "Memory",
+        "Power Supply",
+        "RAID Controller",
+        "Cooling",
+        "Motherboard",
+        "CPU"
+      ],
+      "Network Equipment": [
+        "Switch",
+        "Router",
+        "Firewall",
+        "Wireless Access Point",
+        "Cable",
+        "Load Balancer",
+        "Modem",
+        "Hub",
+        "Patch Panel",
+        "UPS"
+      ],
+      "Printer": [
+        "Paper Jam",
+        "Toner",
+        "Connectivity",
+        "Print Quality",
+        "Driver Issues",
+        "Network Setup",
+        "Hardware Failure",
+        "Configuration",
+        "Maintenance",
+        "Scanner Issues"
+      ]
+    },
+    "Software": {
+      "Operating System": [
+        "Windows Update",
+        "Boot Issues",
+        "Performance",
+        "Blue Screen",
+        "Drivers",
+        "Registry",
+        "File System",
+        "Services",
+        "User Profiles",
+        "Group Policy"
+      ],
+      "Applications": [
+        "Office Suite",
+        "Database",
+        "Email Client",
+        "Web Browser",
+        "Custom Software",
+        "ERP System",
+        "CRM",
+        "CAD Software",
+        "Development Tools",
+        "Business Intelligence"
+      ],
+      "Security Software": [
+        "Antivirus",
+        "Firewall",
+        "VPN",
+        "Encryption",
+        "Authentication",
+        "Endpoint Protection",
+        "Backup Software",
+        "Monitoring Tools",
+        "SIEM",
+        "Vulnerability Scanner"
+      ]
+    },
+    "Network": {
+      "Connectivity": [
+        "Internet Access",
+        "Local Network",
+        "VPN",
+        "WiFi",
+        "Ethernet",
+        "DNS Resolution",
+        "DHCP",
+        "Gateway",
+        "Proxy",
+        "Bandwidth"
+      ],
+      "Performance": [
+        "Slow Connection",
+        "Bandwidth",
+        "Latency",
+        "Packet Loss",
+        "DNS",
+        "Throughput",
+        "Jitter",
+        "Congestion",
+        "QoS",
+        "Load Balancing"
+      ],
+      "Remote Access": [
+        "VPN Issues",
+        "RDP",
+        "SSH",
+        "Authentication",
+        "Permissions",
+        "Terminal Services",
+        "Citrix",
+        "VNC",
+        "Zero Trust",
+        "Multi-factor Auth"
+      ]
+    },
+    "Security": {
+      "Access Control": [
+        "Password Reset",
+        "Account Lockout",
+        "Permissions",
+        "Multi-factor Auth",
+        "Single Sign-On",
+        "Role Assignment",
+        "Group Membership",
+        "Privileged Access",
+        "Certificate Issues",
+        "Token Management"
+      ],
+      "Incidents": [
+        "Malware",
+        "Phishing",
+        "Data Breach",
+        "Unauthorized Access",
+        "Security Alert",
+        "Virus Detection",
+        "Suspicious Activity",
+        "Policy Violation",
+        "Ransomware",
+        "Social Engineering"
+      ],
+      "Compliance": [
+        "Audit",
+        "Policy Violation",
+        "Data Classification",
+        "Encryption",
+        "Backup",
+        "Retention",
+        "Access Review",
+        "Certification",
+        "Risk Assessment",
+        "Incident Response"
+      ]
+    },
+    "Database": {
+      "Performance": [
+        "Slow Queries",
+        "Deadlocks",
+        "Connection Issues",
+        "Timeout",
+        "Memory Usage",
+        "CPU Usage",
+        "Index Issues",
+        "Blocking",
+        "Query Optimization",
+        "Statistics"
+      ],
+      "Availability": [
+        "Database Down",
+        "Connection Failed",
+        "Service Restart",
+        "Failover",
+        "Backup Issues",
+        "Recovery",
+        "Replication",
+        "Clustering",
+        "High Availability",
+        "Disaster Recovery"
+      ],
+      "Data": [
+        "Corruption",
+        "Missing Data",
+        "Incorrect Data",
+        "Import Issues",
+        "Export Issues",
+        "Synchronization",
+        "Migration",
+        "Transformation",
+        "Data Quality",
+        "Schema Changes"
+      ]
+    },
+    "Email": {
+      "Delivery": [
+        "Cannot Send",
+        "Cannot Receive",
+        "Delayed Delivery",
+        "Bounced Messages",
+        "Spam Issues",
+        "Attachment Issues",
+        "Size Limits",
+        "Queue Issues",
+        "Routing Problems",
+        "SMTP Errors"
+      ],
+      "Client Issues": [
+        "Outlook Crashes",
+        "Configuration",
+        "Profile Corruption",
+        "OST Issues",
+        "Synchronization",
+        "Add-ins",
+        "Performance",
+        "Search Issues",
+        "Calendar Problems",
+        "Mobile Sync"
+      ],
+      "Server Issues": [
+        "Exchange Down",
+        "Mailbox Issues",
+        "Storage Limits",
+        "Transport Issues",
+        "Certificate Issues",
+        "Authentication",
+        "Database Issues",
+        "Backup Issues",
+        "Load Balancing",
+        "Cluster Problems"
+      ]
+    }
+  },
+  "priority_distribution": {
+    "1 - Critical": 8,
+    "2 - High": 22,
+    "3 - Moderate": 55,
+    "4 - Low": 15
+  },
+  "state_distribution": {
+    "Closed": 100
+  },
+  "impact_urgency_matrix": {
+    "1 - Critical": {
+      "impact": "1 - High",
+      "urgency": "1 - High"
+    },
+    "2 - High": {
+      "impact": "2 - Medium",
+      "urgency": "2 - Medium"
+    },
+    "3 - Moderate": {
+      "impact": "2 - Medium",
+      "urgency": "3 - Low"
+    },
+    "4 - Low": {
+      "impact": "3 - Low",
+      "urgency": "3 - Low"
+    }
+  },
+  "user_personas": {
+    "Executive": [
+      "CEO",
+      "CTO",
+      "CFO",
+      "VP Engineering",
+      "Director of Operations",
+      "VP Sales",
+      "Chief Data Officer",
+      "VP Product"
+    ],
+    "Manager": [
+      "Department Head",
+      "Team Lead",
+      "Project Manager",
+      "Product Manager",
+      "Engineering Manager",
+      "Sales Manager",
+      "Operations Manager",
+      "Quality Manager"
+    ],
+    "Technical": [
+      "Software Engineer",
+      "DevOps Engineer",
+      "Data Scientist",
+      "System Administrator",
+      "Database Administrator",
+      "Security Engineer",
+      "Network Engineer",
+      "Cloud Architect"
+    ],
+    "Business": [
+      "Business Analyst",
+      "Sales Representative",
+      "Marketing Specialist",
+      "Customer Success",
+      "Product Owner",
+      "Account Manager",
+      "Financial Analyst",
+      "Operations Specialist"
+    ],
+    "Support": [
+      "Help Desk Technician",
+      "Customer Support",
+      "Technical Writer",
+      "QA Engineer",
+      "IT Support",
+      "Field Service",
+      "Training Coordinator",
+      "Documentation Specialist"
+    ],
+    "Administrative": [
+      "HR Specialist",
+      "Finance Analyst",
+      "Administrative Assistant",
+      "Facilities Coordinator",
+      "Procurement Specialist",
+      "Legal Assistant",
+      "Executive Assistant",
+      "Office Manager"
+    ]
+  },
+  "resolution_categories": [
+    "Configuration",
+    "Software Update",
+    "Hardware Replacement",
+    "User Training",
+    "Process Improvement",
+    "Security Patch",
+    "Network Reconfiguration",
+    "Database Optimization",
+    "Application Restart",
+    "Cache Clearing",
+    "Permission Update",
+    "System Reboot",
+    "Driver Update",
+    "Firewall Rule",
+    "DNS Configuration"
+  ],
+  "business_impact_levels": [
+    "Low",
+    "Medium",
+    "High",
+    "Critical"
+  ],
+  "escalation_triggers": {
+    "priority_1_time_limit": 60,
+    "priority_2_time_limit": 240,
+    "priority_3_time_limit": 1440,
+    "priority_4_time_limit": 4320,
+    "customer_escalation_keywords": [
+      "escalate",
+      "manager",
+      "urgent",
+      "critical",
+      "emergency",
+      "outage"
+    ]
+  },
+  "quality_metrics": {
+    "min_description_length": 200,
+    "max_description_length": 1000,
+    "min_work_notes": 3,
+    "max_work_notes": 7,
+    "min_close_notes_length": 100,
+    "max_close_notes_length": 500,
+    "required_technical_keywords": 3
+  }
+}
