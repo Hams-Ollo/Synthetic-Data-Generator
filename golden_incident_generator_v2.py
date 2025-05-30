@@ -180,7 +180,7 @@ class GoldenIncidentGeneratorV2:
         # Production settings
         self.max_retries = kwargs.get('max_retries', 3)
         self.retry_delay = kwargs.get('retry_delay', 1.0)
-        self.batch_size = kwargs.get('batch_size', 10)
+        self.batch_size = kwargs.get('batch_size', 100)
         self.enable_caching = kwargs.get('enable_caching', True)
         
         self.logger.info("Golden Incident Generator v2.0 initialized successfully")
@@ -679,6 +679,8 @@ class GoldenIncidentGeneratorV2:
         # Determine complexity and escalation level
         complexity = self.determine_incident_complexity(context, incident_data)
         escalation_level = self.determine_escalation_level(context, complexity)
+        # Generate unique comments
+        comments = self.generate_comments(context, incident_data)
         return EnhancedIncidentRecord(
             # Core ServiceNow fields
             number=incident_number,
@@ -1131,10 +1133,10 @@ Examples:
     )
     
     # Generation arguments
-    parser.add_argument('--count', type=int, default=10, 
-                       help='Number of incidents to generate (default: 10)')
+    parser.add_argument('--count', type=int, default=None, 
+                       help='Total number of incidents to generate (recommended; e.g., --count 300)')
     parser.add_argument('--batch-size', type=int, default=10,
-                       help='Batch size for generation (default: 10)')
+                       help='Batch size for LLM calls (not total incidents; default: 10)')
     parser.add_argument('--config', type=str,
                        help='Path to configuration file')
     
@@ -1163,7 +1165,15 @@ Examples:
                        help='Disable console output')
     
     args = parser.parse_args()
-    
+
+    # Backward compatibility: if --count is not provided but --batch-size is, treat batch-size as count (with warning)
+    if args.count is None:
+        if args.batch_size != 10:
+            print("[WARNING] --count not specified. Using --batch-size as total incident count for backward compatibility. Please use --count for total incidents.")
+            args.count = args.batch_size
+        else:
+            args.count = 10  # default
+
     try:
         # Initialize generator
         generator = GoldenIncidentGeneratorV2(
